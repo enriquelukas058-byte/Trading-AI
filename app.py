@@ -4,7 +4,7 @@ import streamlit.components.v1 as components
 st.set_page_config(page_title="Live AI Trading Analyzer", layout="wide")
 
 st.title("🤖 Live AI Trading Analyzer Dashboard")
-st.markdown("May kasamang live TradingView chart sa loob ng app para sa XAU/USD at iba pa.")
+st.markdown("Isang all-in-one trading tool na may kasamang live TradingView chart para sa XAU/USD at iba pa.")
 
 st.sidebar.header("⚙️ Mga Setting ng Analisis")
 
@@ -64,4 +64,4 @@ tradingview_html = f"""
 components.html(tradingview_html, height=520)
 
 st.markdown("---")
-st.info("💡 **Tip:** Pwede kang magpalit ng indicators, guhit, o timeframe nang direkta sa loob mismo ng chart na ito.")
+st.info("💡 **Trading AI Note:** Dito mo na direktang suriin ang price action, market structure, at mga indicator para sa iyong trade setup.")
