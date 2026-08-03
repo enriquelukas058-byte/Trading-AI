@@ -1,24 +1,8 @@
-import subprocess
-import sys
-
-def install(package):
-    subprocess.check_call([sys.executable, "-m", "pip", "install", package])
-
-try:
-    import yfinance as yf
-except ImportError:
-    install("yfinance")
-    import yfinance as yf
-
-try:
-    import ta
-except ImportError:
-    install("ta")
-    import ta
-
 import streamlit as st
 import pandas as pd
 import numpy as np
+import yfinance as yf
+import ta
 
 st.set_page_config(page_title="AI Trading Analyzer [RSI & SMC Logic]", layout="wide")
 
