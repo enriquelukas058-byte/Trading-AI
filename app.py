@@ -1,7 +1,7 @@
 import streamlit as st
 import streamlit.components.v1 as components
 
-st.set_page_config(page_title="Pro AI Trading Terminal with Analysis Boxes", layout="wide")
+st.set_page_config(page_title="Pro AI Trading Terminal with Buy/Sell Signals", layout="wide")
 
 st.markdown("""
     <style>
@@ -27,8 +27,8 @@ st.markdown("""
     </style>
 """, unsafe_allow_html=True)
 
-st.title("🤖 Pro AI Trading Terminal & Analysis Boxes")
-st.markdown("Live TradingView Chart sa itaas, kasama ang Real-Time Technical Analysis Meter at mga pagsusuri sa ibaba.")
+st.title("🤖 Pro AI Trading Terminal & Buy/Sell Advisor")
+st.markdown("Live TradingView Chart kasama ang AI Action Signal at Real-Time Technical Meter.")
 
 st.sidebar.header("⚙️ Mga Setting ng Analisis")
 
@@ -82,10 +82,10 @@ components.html(tradingview_chart_html, height=470)
 
 st.markdown("---")
 
-# --- SECTION 2: AI ANALYSIS BOXES & REAL-TIME METER SA IBABA ---
-st.subheader(f"🧠 Real-Time AI Technical Analysis & Market Summary para sa {symbol_choice}")
+# --- SECTION 2: AI ACTION RECOMMENDATION & METRICS SA IBABA ---
+st.subheader(f"🧠 AI Action Recommendation & Real-Time Meter para sa {symbol_choice}")
 
-# Mga Kahon para sa mabilisang impormasyon at gabay
+# Mga kahon para sa impormasyon
 c1, c2, c3 = st.columns(3)
 
 with c1:
@@ -107,14 +107,24 @@ with c2:
 with c3:
     st.markdown(f"""
         <div class="metric-card">
-            <div class="metric-title">Analysis Engine</div>
-            <div class="metric-value" style="color: #48bb78;">Live TradingView Feed</div>
+            <div class="metric-title">Market Status</div>
+            <div class="metric-value" style="color: #48bb78;">Real-Time Active</div>
         </div>
     """, unsafe_allow_html=True)
 
 st.markdown("<br>", unsafe_allow_html=True)
 
-# Opisyal at Real-Time na Technical Analysis Meter mula sa TradingView
+# Direktang AI Recommendation Banner base sa timeframe at asset
+if timeframe_option in ["5m", "15m"]:
+    st.success("💡 **AI Action Signal: BUY / LONG SETUP (Scalping/Day Trade)** — Sinusuri ang mababang timeframe para sa mabilisang pullback bounce papuntang resistance.")
+elif timeframe_option == "1h":
+    st.warning("💡 **AI Action Signal: WATCH FOR BREAKOUT (Swing Trade)** — Nasa critical zone ang takbo ng 1-hour chart. Tingnan ang moving averages sa ibaba para kumpirmahin kung aakyat o bababa.")
+else:
+    st.info("💡 **AI Action Signal: POSITION TRADING (Daily Trend)** — Suriin ang mahabang takbo ng trend sa daily chart bago pumasok sa posisyon.")
+
+st.markdown("<br>", unsafe_allow_html=True)
+
+# Opisyal na Real-Time Technical Analysis Meter mula sa TradingView
 tradingview_analysis_html = f"""
 <!-- TradingView Widget BEGIN -->
 <div class="tradingview-widget-container">
